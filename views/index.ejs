@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h1><%= header %></h1>
+      <p>May<%= title %> be with you.</p>
+      <ul>
+      <% for(let i = 0; i < employees.length; i++) { %>
+        <li> <%= employees[i].lastName %> </li>
+      <% } %>
+      </ul>
+      <div class="delete-item">
+        <form class="form" action="/delete" method="get">
+          <button type="submit" name="button">Delete</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

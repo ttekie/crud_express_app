@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= header %></h1>
+    <p>May<%= title %></p>
+    <form class="new-staff-form" method="POST" action="/new">
+      <input type="text" name="lastName"  placeholder="Enter your last name..">
+      <input type="text" name="department"  placeholder="Enter your department..">
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>
