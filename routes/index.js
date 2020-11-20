@@ -29,7 +29,7 @@ const employees = [
   }
 ]
 
-// Get all employees
+/* Get all employees */
 router.get('/all', (req, res, next) => {
   res.json({staff: employees});
 });
@@ -46,17 +46,18 @@ router.get('/', (req, res, next) => {
   res.render('index', { staff: employees, title: 'Express', header:'crud express application ' });
 });
 
-/* Get New staff page. Show the page */
+/* View - Endpoint - Get New staff page. Show the page */
 router.get('/new', (req, res, next) => {
-  res.render('staff', { title: 'New form page', header: 'New added staff page' });
+  res.render('staff', { title: 'Express', header: 'New added staff page' });
 });
 
-/* Post handele new staff member post/submission. */
+/* API - Endpoint - Post handele new staff member post/submission. */
 router.post('/new', (req, res, next) => {
-  let content = req.body;
-  let firstName = content.firstName;
-  let lastName = content.lastName;
-  let department = content.department;
+  // extract new staff member from the body
+  let member = req.body;
+  let firstName = member.firstName;
+  let lastName = member.lastName;
+  let department = member.department;
   let id = uniqid()
 
   console.log("You have submmited the staff member name: ");
@@ -73,13 +74,24 @@ router.post('/new', (req, res, next) => {
   employees.push(new_staff);
   res.redirect('/');
 });
-
+// API endpoint
 router.put('/update/:id', (req, res, next) => {
   let id = req.params.id;
-  let content = req.body;
-  let firstName = content.firstName;
-  let lastName = content.lastName;
-  let department = content.department;
+  let member = req.body;
+  let firstName = member.firstName;
+  let lastName = member.lastName;
+  let department = member.department;
+
+  // create a new employee object with the updated value
+  let updatedemployee = { firstName: firstName, lastName: lastName, department: department, id: id }
+  // updating the employee with the given id
+  for(let i = 0; i < employees.length; i++) {
+    if (employees[i].id == id){
+      employees[i] = updatedemployee;
+    }
+  }
+  // send back updated list of employees
+  res.send(employees);
 });
 
 module.exports = router;
