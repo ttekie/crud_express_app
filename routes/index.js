@@ -29,29 +29,19 @@ const employees = [
   }
 ]
 
-/* Get all employees */
+/* API - READ - Get all employees */
 router.get('/all', (req, res, next) => {
   res.json({staff: employees});
 });
 
-/* Delete the last item. */
+/* API - Delete the last item. */
 router.get('/delete', (req, res, next) => {
   console.log('DELETE END POINT WORKS');
   employees.pop();
   res.render('index', { staff: employees, title: 'Express', header: 'Remove the last item' });
 });
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { staff: employees, title: 'Express', header:'crud express application ' });
-});
-
-/* View - Endpoint - Get New staff page. Show the page */
-router.get('/new', (req, res, next) => {
-  res.render('staff', { title: 'Express', header: 'New added staff page' });
-});
-
-/* API - Endpoint - Post handele new staff member post/submission. */
+/* API - CREATE -Endpoint - Post handele new staff member post/submission. */
 router.post('/new', (req, res, next) => {
   // extract new staff member from the body
   let member = req.body;
@@ -74,7 +64,7 @@ router.post('/new', (req, res, next) => {
   employees.push(new_staff);
   res.redirect('/');
 });
-// API endpoint
+// API - UPDATE endpoint
 router.put('/update/:id', (req, res, next) => {
   let id = req.params.id;
   let member = req.body;
