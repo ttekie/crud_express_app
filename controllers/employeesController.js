@@ -36,7 +36,7 @@ const store = (req, res, next) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     department: req.body.department,
-    id: uniqid()
+    id: id()
   });
   employee.save();
   .then(response =>{
@@ -59,7 +59,7 @@ const update = (req, res, next) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     department: req.body.department,
-    id: uniqid()
+    id: id()
   }
 
   Employees.findByIdAndUpdate(employeeID, {$set: updatedData})
