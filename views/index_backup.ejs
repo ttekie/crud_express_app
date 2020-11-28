@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h1><%= header %></h1>
+      <p> welcome to <%= title %></p>
+      <ul>
+      <% for(let i = 0; i < staff.length; i++) { %>
+        <li> <%= staff[i].lastName %> </li>
+      <% } %>
+      </ul>
+      <div class="delete-item">
+        <form class="form" action="/delete" method="get">
+          <button type="submit" name="button">Delete</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+// const employees = [
+//   {
+//     firstName: 'Steve',
+//     lastName: 'Brown',
+//     department: 'Engineering',
+//     id: uniqid()
+//   },
+//   {
+//     firstName: 'Janine',
+//     lastName: 'Smith',
+//     department: 'Marketing',
+//     id: uniqid()
+//   },
+//   {
+//     firstName: 'Karen',
+//     lastName: 'Jones',
+//     department: 'Sales',
+//     id: uniqid()
+//   },
+//   {
+//     firstName: 'Ben',
+//     lastName: 'Williams',
+//     department: 'Administration',
+//     id: uniqid()
+//   }
+// ]
+
+<!-- /* API - CREATE -Endpoint - Post handele new staff member post/submission. */
+router.post('/new', (req, res, next) => {
+  // extract new staff member from the body
+  let member = req.body;
+  let firstName = member.firstName;
+  let lastName = member.lastName;
+  let department = member.department;
+  let id = uniqid()
+
+  console.log("You have submmited the staff member name: ");
+  console.log("staff member last name: " + lastName);
+  console.log("staff member department: " + department); -->

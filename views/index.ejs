@@ -8,11 +8,6 @@
     <div class="container">
       <h1><%= header %></h1>
       <p> welcome to <%= title %></p>
-      <ul>
-      <% for(let i = 0; i < staff.length; i++) { %>
-        <li> <%= staff[i].lastName %> </li>
-      <% } %>
-      </ul>
       <div class="delete-item">
         <form class="form" action="/delete" method="get">
           <button type="submit" name="button">Delete</button>
