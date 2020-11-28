@@ -1,4 +1,4 @@
-const Employees = require('./../models/employees');
+  const Employees = require('./../models/employees');
 
 //show the list of employees
 const index = (req, res, next) => {
@@ -6,13 +6,13 @@ const index = (req, res, next) => {
   .then(response => {
     res.json({
       response
-    });
-  });
+    })
+  })
   .catch(error => {
     res.json({
       message: 'An error Occured!'
-    });
-  });
+    })
+  })
 }
 // show a single employee
 const show = (req, res, next) => {
@@ -21,13 +21,13 @@ const show = (req, res, next) => {
   .then(response => {
     res.json({
       response
-    });
-  });
+    })
+  })
   .catch(error => {
     res.json({
       message: 'An error Occured!'
-    });
-  });
+    })
+  })
 }
 
 // add new employee
@@ -37,18 +37,18 @@ const store = (req, res, next) => {
     lastName: req.body.lastName,
     department: req.body.department,
     id: id()
-  });
-  employee.save();
+  })
+  employee.save()
   .then(response =>{
     res.json({
       message:'Employee Added Successfully'
-    });
-  });
+    })
+  })
   .catch(error => {
     res.json({
       message: 'An error Occured!'
-    });
-  });
+    })
+  })
 }
 
 // update an employee
@@ -66,13 +66,13 @@ const update = (req, res, next) => {
   .then(() => {
     res.json({
       message: 'Employee updated Successfully!'
-    });
-  });
+    })
+  })
   .catch(error => {
     res.json({
       message: 'An error Occured!'
-    });
-  });
+    })
+  })
 }
 
 // delete an employee
@@ -82,13 +82,13 @@ const destroy = (req, res, next) => {
   .then(() => {
     req.json({
         message: 'Employee deleted Successfully!'
-    });
-  });
+    })
+  })
   .catch(error => {
     res.json({
       message: 'An error Occured!'
-    });
-  });
+    })
+  })
 }
 
 module.exports = {
